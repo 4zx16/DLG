@@ -14,14 +14,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const card = document.createElement('div');
         card.classList.add('game-card');
 
-        card.innerHTML = `
-          ${game.image ? `<img src="${game.image}" alt="${game.name} Cover">` : ''}
-          <div class="game-content">
-            <h3 class="game-title">${game.name}</h3>
-            <p class="game-desc">${game.desc}</p>
-            ${game.link ? `<a href="${game.link}" target="_blank" rel="noopener" class="btn-small">View Game</a>` : ''}
-          </div>
-        `;
+card.innerHTML = `
+  ${game.image && game.image !== "N/A" ? `<img src="${game.image}" alt="${game.name} Cover">` : ''}
+  <div class="game-content">
+    <h3 class="game-title">${game.name}</h3>
+    <p class="game-desc">${game.desc || "No description available."}</p>
+    ${game.link ? `<a href="${game.link}" target="_blank" rel="noopener" class="btn-small">View Game</a>` : ''}
+  </div>
+`;
         fragment.appendChild(card);
       });
       grid.appendChild(fragment);
