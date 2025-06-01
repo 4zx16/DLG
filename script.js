@@ -3,20 +3,34 @@ document.addEventListener('DOMContentLoaded', () => {
     .then(res => res.json())
     .then(games => {
       const grid = document.getElementById('game-grid');
+      if (!Array.isArray(games) || games.length === 0) {
+        grid.innerHTML = "<p>No games found.</p>";
+        return;
+      }
+
+      const fragment = document.createDocumentFragment();
+
       games.forEach(game => {
         const card = document.createElement('div');
         card.classList.add('game-card');
+
         card.innerHTML = `
           ${game.image ? `<img src="${game.image}" alt="${game.name} Cover">` : ''}
-          <h3>${game.name}</h3>
-          <p>${game.desc}</p>
-          ${game.link ? `<a href="${game.link}" target="_blank" class="cta small">View Game</a>` : ''}
+          <div class="game-content">
+            <h3 class="game-title">${game.name}</h3>
+            <p class="game-desc">${game.desc}</p>
+            ${game.link ? `<a href="${game.link}" target="_blank" rel="noopener" class="btn-small">View Game</a>` : ''}
+          </div>
         `;
-        grid.appendChild(card);
+
+        fragment.appendChild(card);
       });
+
+      grid.appendChild(fragment);
     })
     .catch(err => {
       console.error('Could not load games:', err);
-      document.getElementById('game-grid').innerHTML = "<p>Failed to load games. Check your JSON or file path.</p>";
+      const grid = document.getElementById('game-grid');
+      grid.innerHTML = "<p>Failed to load games. Check your JSON or file path.</p>";
     });
 });
