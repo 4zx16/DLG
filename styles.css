@@ -106,6 +106,25 @@ nav a:hover {
   border-radius: 4px;
 }
 
+.game-card img {
+  width: 100%;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+.cta.small {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  background-color: #ff003c;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+}
+.cta.small:hover {
+  background-color: #cc002f;
+}
+
 .game-card h3 {
   margin-bottom: 0.5rem;
   color: #ff003c;
