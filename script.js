@@ -22,15 +22,13 @@ document.addEventListener('DOMContentLoaded', () => {
             ${game.link ? `<a href="${game.link}" target="_blank" rel="noopener" class="btn-small">View Game</a>` : ''}
           </div>
         `;
-
         fragment.appendChild(card);
       });
-
       grid.appendChild(fragment);
     })
     .catch(err => {
       console.error('Could not load games:', err);
       const grid = document.getElementById('game-grid');
-      grid.innerHTML = "<p>Failed to load games. Check your JSON or file path.</p>";
+      grid.innerHTML = "<p>Failed to load games.</p>";
     });
 });
